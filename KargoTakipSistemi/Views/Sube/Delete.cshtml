@@ -1,0 +1,30 @@
+@model KargoTakipSistemi.Models.Sube
+
+@{
+    ViewData["Title"] = "Şube Sil";
+}
+
+<h1>Şube Sil</h1>
+
+<div class="alert alert-danger mt-3">
+    Bu şubeyi silmek istediğinize emin misiniz?
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <strong>@Model.SubeAdi</strong>
+    </div>
+
+    <div class="card-body">
+        <p><strong>Şube Adı:</strong> @Model.SubeAdi</p>
+        <p><strong>Şehir:</strong> @Model.Sehir</p>
+        <p><strong>Adres:</strong> @Model.Adres</p>
+        <p><strong>Telefon:</strong> @Model.Telefon</p>
+    </div>
+</div>
+
+<form asp-action="Delete" class="mt-3">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

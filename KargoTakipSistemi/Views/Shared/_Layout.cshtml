@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Kargo Takip Sistemi</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-4 p-3">
+            <div class="container">
+                <a class="navbar-brand text-warning fw-bold fs-4" asp-controller="Home" asp-action="Index">
+                    🚚 T&Z Express
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Menüyü Aç/Kapat">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-3" asp-controller="Home" asp-action="Index">
+                                Ana Sayfa
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-3" asp-controller="Sube" asp-action="Index">
+                                Şubeler
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-3" asp-controller="Kargo" asp-action="Index">
+                                Kargolar
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-3" asp-controller="DurumKaydi" asp-action="Index">
+                                Durum Kayıtları
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-warning fw-semibold px-3" asp-controller="Kargo" asp-action="Sorgula">
+                                Kargo Sorgula
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-white p-3 mt-5 shadow-sm text-center">
+        <div class="container">
+            &copy; @DateTime.Now.Year - Kargo Takip Sistemi | Yönetim Paneli
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

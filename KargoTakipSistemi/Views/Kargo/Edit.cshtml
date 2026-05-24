@@ -1,0 +1,74 @@
+@model KargoTakipSistemi.Models.Kargo
+
+@{
+    ViewData["Title"] = "Kargo Düzenle";
+}
+
+<h1>Kargo Düzenle</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="TakipNo" class="control-label">Takip Numarası</label>
+                <input asp-for="TakipNo" class="form-control" />
+                <span asp-validation-for="TakipNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="GondericiAd" class="control-label">Gönderici Adı</label>
+                <input asp-for="GondericiAd" class="form-control" />
+                <span asp-validation-for="GondericiAd" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="AliciAd" class="control-label">Alıcı Adı</label>
+                <input asp-for="AliciAd" class="form-control" />
+                <span asp-validation-for="AliciAd" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="AliciAdres" class="control-label">Alıcı Adresi</label>
+                <textarea asp-for="AliciAdres" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="AliciAdres" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="GonderimTarihi" class="control-label">Gönderim Tarihi</label>
+                <input asp-for="GonderimTarihi" class="form-control" type="date" />
+                <span asp-validation-for="GonderimTarihi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="TeslimTarihi" class="control-label">Teslim Tarihi</label>
+                <input asp-for="TeslimTarihi" class="form-control" type="date" />
+                <span asp-validation-for="TeslimTarihi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="SubeId" class="control-label">Şube</label>
+                <select asp-for="SubeId" class="form-control" asp-items="ViewBag.SubeId">
+                    <option value="">Şube seçiniz</option>
+                </select>
+                <span asp-validation-for="SubeId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-success">Güncelle</button>
+                <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

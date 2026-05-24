@@ -1,0 +1,25 @@
+@model KargoTakipSistemi.Models.Sube
+
+@{
+    ViewData["Title"] = "Şube Detayı";
+}
+
+<h1>Şube Detayı</h1>
+
+<div class="card mt-3">
+    <div class="card-header">
+        <strong>@Model.SubeAdi</strong> bilgileri
+    </div>
+
+    <div class="card-body">
+        <p><strong>Şube Adı:</strong> @Model.SubeAdi</p>
+        <p><strong>Şehir:</strong> @Model.Sehir</p>
+        <p><strong>Adres:</strong> @Model.Adres</p>
+        <p><strong>Telefon:</strong> @Model.Telefon</p>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Düzenle</a>
+    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+</div>

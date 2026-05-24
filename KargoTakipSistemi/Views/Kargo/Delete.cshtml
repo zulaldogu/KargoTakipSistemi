@@ -1,0 +1,35 @@
+@model KargoTakipSistemi.Models.Kargo
+
+@{
+    ViewData["Title"] = "Kargo Sil";
+}
+
+<h1>Kargo Sil</h1>
+
+<div class="alert alert-danger mt-3">
+    Bu kargoyu silmek istediğinize emin misiniz?
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <strong>@Model.TakipNo</strong> numaralı kargo
+    </div>
+
+    <div class="card-body">
+        <p><strong>Gönderici:</strong> @Model.GondericiAd</p>
+        <p><strong>Alıcı:</strong> @Model.AliciAd</p>
+        <p><strong>Alıcı Adresi:</strong> @Model.AliciAdres</p>
+        <p><strong>Gönderim Tarihi:</strong> @Model.GonderimTarihi.ToShortDateString()</p>
+        <p>
+            <strong>Teslim Tarihi:</strong>
+            @(Model.TeslimTarihi.HasValue ? Model.TeslimTarihi.Value.ToShortDateString() : "Teslim edilmedi")
+        </p>
+        <p><strong>Şube:</strong> @Model.Sube?.SubeAdi</p>
+    </div>
+</div>
+
+<form asp-action="Delete" class="mt-3">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

@@ -1,0 +1,25 @@
+@model KargoTakipSistemi.Models.DurumKaydi
+
+@{
+    ViewData["Title"] = "Durum Kaydı Detayı";
+}
+
+<h1>Durum Kaydı Detayı</h1>
+
+<div class="card mt-3">
+    <div class="card-header">
+        <strong>@Model.Kargo?.TakipNo</strong> numaralı kargo durum bilgisi
+    </div>
+
+    <div class="card-body">
+        <p><strong>Kargo Takip No:</strong> @Model.Kargo?.TakipNo</p>
+        <p><strong>Durum:</strong> @Model.Durum</p>
+        <p><strong>Açıklama:</strong> @Model.Aciklama</p>
+        <p><strong>Tarih:</strong> @Model.Tarih.ToString("dd.MM.yyyy HH:mm")</p>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Düzenle</a>
+    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+</div>

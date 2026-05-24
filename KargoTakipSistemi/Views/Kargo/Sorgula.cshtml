@@ -1,0 +1,94 @@
+﻿@model KargoTakipSistemi.Models.Kargo
+
+@{
+    ViewData["Title"] = "Kargo Sorgula";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-warning">
+                <h4 class="mb-0">🚚 Kargo Sorgula</h4>
+            </div>
+
+            <div class="card-body">
+                <p class="text-muted">
+                    Takip numaranızı girerek kargonuzun güncel durumunu ve geçmiş hareketlerini görüntüleyebilirsiniz.
+                </p>
+
+                <form asp-action="Sorgula" method="get">
+                    <div class="input-group">
+                        <input type="text" name="takipNo" class="form-control" placeholder="Örn: KRG001" />
+                        <button type="submit" class="btn btn-primary">Sorgula</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @if (ViewBag.Mesaj != null)
+        {
+            <div class="alert alert-warning">
+                @ViewBag.Mesaj
+            </div>
+        }
+
+        @if (Model != null)
+        {
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <strong>Kargo Bilgileri</strong>
+                </div>
+
+                <div class="card-body">
+                    <p><strong>Takip No:</strong> @Model.TakipNo</p>
+                    <p><strong>Gönderici:</strong> @Model.GondericiAd</p>
+                    <p><strong>Alıcı:</strong> @Model.AliciAd</p>
+                    <p><strong>Alıcı Adres:</strong> @Model.AliciAdres</p>
+                    <p><strong>Gönderim Tarihi:</strong> @Model.GonderimTarihi.ToShortDateString()</p>
+                    <p>
+                        <strong>Teslim Tarihi:</strong>
+                        @(Model.TeslimTarihi.HasValue ? Model.TeslimTarihi.Value.ToShortDateString() : "Teslim edilmedi")
+                    </p>
+                    <p><strong>Şube:</strong> @Model.Sube?.SubeAdi</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <strong>Durum Geçmişi</strong>
+                </div>
+
+                <div class="card-body">
+                    @if (Model.DurumKayitlari != null && Model.DurumKayitlari.Any())
+                    {
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Durum</th>
+                                    <th>Açıklama</th>
+                                    <th>Tarih</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var durum in Model.DurumKayitlari.OrderByDescending(d => d.Tarih))
+                                {
+                                    <tr>
+                                        <td>@durum.Durum</td>
+                                        <td>@durum.Aciklama</td>
+                                        <td>@durum.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mb-0">
+                            Bu kargo için henüz durum kaydı eklenmemiş.
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

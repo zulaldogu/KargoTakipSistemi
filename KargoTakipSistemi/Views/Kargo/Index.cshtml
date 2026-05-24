@@ -1,0 +1,57 @@
+@model IEnumerable<KargoTakipSistemi.Models.Kargo>
+
+@{
+    ViewData["Title"] = "Kargolar";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Kargolar</h1>
+    <a asp-action="Create" class="btn btn-primary">Yeni Kargo Ekle</a>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Takip No</th>
+            <th>Gönderici</th>
+            <th>Alıcı</th>
+            <th>Alıcı Adres</th>
+            <th>Gönderim Tarihi</th>
+            <th>Teslim Tarihi</th>
+            <th>Şube</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="8" class="text-center text-muted">
+                    Henüz kayıtlı kargo bulunmamaktadır.
+                </td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TakipNo</td>
+                    <td>@item.GondericiAd</td>
+                    <td>@item.AliciAd</td>
+                    <td>@item.AliciAdres</td>
+                    <td>@item.GonderimTarihi.ToShortDateString()</td>
+                    <td>
+                        @(item.TeslimTarihi.HasValue ? item.TeslimTarihi.Value.ToShortDateString() : "Teslim edilmedi")
+                    </td>
+                    <td>@item.Sube?.SubeAdi</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white">Detay</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

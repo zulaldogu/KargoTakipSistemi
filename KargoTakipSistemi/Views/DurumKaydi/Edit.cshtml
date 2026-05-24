@@ -1,0 +1,63 @@
+@model KargoTakipSistemi.Models.DurumKaydi
+
+@{
+    ViewData["Title"] = "Durum Kaydı Düzenle";
+}
+
+<h1>Durum Kaydı Düzenle</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="KargoId" class="control-label">Kargo</label>
+                <select asp-for="KargoId" class="form-control" asp-items="ViewBag.KargoId">
+                    <option value="">Kargo seçiniz</option>
+                </select>
+                <span asp-validation-for="KargoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Durum" class="control-label">Durum</label>
+                <select asp-for="Durum" class="form-control">
+                    <option value="">Durum seçiniz</option>
+                    <option value="Kargo alındı">Kargo alındı</option>
+                    <option value="Transfer merkezinde">Transfer merkezinde</option>
+                    <option value="Dağıtıma çıktı">Dağıtıma çıktı</option>
+                    <option value="Teslim edildi">Teslim edildi</option>
+                    <option value="İade edildi">İade edildi</option>
+                </select>
+                <span asp-validation-for="Durum" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Aciklama" class="control-label">Açıklama</label>
+                <textarea asp-for="Aciklama" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Tarih" class="control-label">Tarih</label>
+                <input asp-for="Tarih" class="form-control" type="datetime-local" />
+                <span asp-validation-for="Tarih" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-success">Güncelle</button>
+                <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

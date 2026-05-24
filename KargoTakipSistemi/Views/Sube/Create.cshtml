@@ -1,0 +1,52 @@
+@model KargoTakipSistemi.Models.Sube
+
+@{
+    ViewData["Title"] = "Yeni Şube Ekle";
+}
+
+<h1>Yeni Şube Ekle</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="SubeAdi" class="control-label">Şube Adı</label>
+                <input asp-for="SubeAdi" class="form-control" placeholder="Örn: Merkez Şube" />
+                <span asp-validation-for="SubeAdi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Sehir" class="control-label">Şehir</label>
+                <input asp-for="Sehir" class="form-control" placeholder="Örn: Karaman" />
+                <span asp-validation-for="Sehir" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Adres" class="control-label">Adres</label>
+                <textarea asp-for="Adres" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Adres" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Telefon" class="control-label">Telefon</label>
+                <input asp-for="Telefon" class="form-control" placeholder="Örn: 0338 000 00 00" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

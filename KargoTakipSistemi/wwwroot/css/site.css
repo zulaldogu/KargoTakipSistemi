@@ -1,0 +1,82 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.hero-section {
+    background-color: #ffffff;
+    border-left: 6px solid #ffc107;
+    border-radius: 8px;
+    padding: 70px;
+    margin-top: 20px;
+}
+
+.hero-content h1 {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #212529;
+}
+
+.hero-content p {
+    font-size: 20px;
+    color: #5f6368;
+    max-width: 850px;
+    line-height: 1.6;
+}
+
+.dashboard-card {
+    border: none;
+    border-radius: 8px;
+    padding: 30px 15px;
+    transition: 0.2s ease-in-out;
+}
+
+    .dashboard-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+    }
+
+.dashboard-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.dashboard-card h4 {
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+.dashboard-card p {
+    color: #5f6368;
+    font-size: 16px;
+    line-height: 1.5;
+}

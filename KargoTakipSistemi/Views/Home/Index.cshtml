@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="hero-section shadow-sm mb-5">
+    <div class="hero-content">
+        <h1>Kargo Takip Otomasyonu</h1>
+        <p>
+            Şubeleri, kargo kayıtlarını ve anlık transfer hareketlerini tek bir ekran üzerinden
+            kolayca yönetebileceğiniz merkezi lojistik yönetim paneline hoş geldiniz.
+        </p>
+
+        <div class="mt-4">
+            <a asp-controller="Kargo" asp-action="Index" class="btn btn-warning btn-lg fw-bold me-2">
+                Kargoları Listele
+            </a>
+
+            <a asp-controller="Kargo" asp-action="Sorgula" class="btn btn-outline-dark btn-lg fw-bold">
+                Kargo Sorgula
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row text-center mb-5">
+    <div class="col-md-4 mb-4">
+        <div class="card dashboard-card shadow-sm h-100">
+            <div class="card-body">
+                <div class="dashboard-icon">🏢</div>
+                <h4>Şube Yönetimi</h4>
+                <p>
+                    Sistemdeki aktif dağıtım ve transfer merkezlerini görüntüleyin
+                    veya yeni şube ekleyin.
+                </p>
+                <a asp-controller="Sube" asp-action="Index" class="btn btn-outline-dark">
+                    Şubelere Git
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card dashboard-card shadow-sm h-100">
+            <div class="card-body">
+                <div class="dashboard-icon">📦</div>
+                <h4>Kargo İşlemleri</h4>
+                <p>
+                    Gönderici, alıcı ve takip numarası bilgilerini yönetin,
+                    yeni kargolar tanımlayın.
+                </p>
+                <a asp-controller="Kargo" asp-action="Index" class="btn btn-outline-dark">
+                    Kargolara Git
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card dashboard-card shadow-sm h-100">
+            <div class="card-body">
+                <div class="dashboard-icon">⏱️</div>
+                <h4>Anlık Durum Takibi</h4>
+                <p>
+                    Kargoların hangi şubede olduğunu, kurye dağıtım ve teslimat
+                    durumlarını adım adım izleyin.
+                </p>
+                <a asp-controller="DurumKaydi" asp-action="Index" class="btn btn-outline-dark">
+                    Durumlara Git
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-info shadow-sm">
+    <strong>Proje Yapısı:</strong>
+    Bu proje ASP.NET Core MVC, Entity Framework Core, Code First Migration, LINQ,
+    ilişkili tablolar ve form validation kullanılarak geliştirilmiştir.
+</div>
