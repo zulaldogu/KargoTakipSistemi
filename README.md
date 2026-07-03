@@ -25,4 +25,4 @@ Proje geliştirilirken standart otomatik kod (Scaffolding) üretiminin ötesine 
 ## 🚀 Projeyi Çalıştırma (Kurulum)
 1. Bu repoyu bilgisayarınıza klonlayın:
    ```bash
-   git clone [https://github.com/zulaldogu/KargoTakipSistemi.git](https://github.com/KULLANICI_ADINIZ/KargoTakipSistemi.git)
+   git clone [https://github.com/zulaldogu/KargoTakipSistemi.git]
